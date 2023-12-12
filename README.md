@@ -14,3 +14,5 @@ In your solution you must provide the following in your Github link account:
   Uploaded java codes for the solution.
 
   # Class Diagram
+
+![Blank diagram](https://github.com/Reirinn/Singleton-Pattern/assets/142465054/884cbee0-4287-4ffe-a699-e8109047514a)
