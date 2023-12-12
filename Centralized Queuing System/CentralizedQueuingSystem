@@ -1,0 +1,67 @@
+package SingletonPattern;
+import java.util.*;
+
+public class CentralizedQueuingSystem
+{
+    
+    private static CentralizedQueuingSystem instance;
+    private Queue<Integer> queue = new LinkedList<>();
+    private int[] helpDeskStations = new int[3];
+
+    public synchronized void addQueue()
+    {
+        int queueNum = queue.size() + 1;
+        queue.add(queueNum);
+        System.out.println("A person has entered and has been assigned a Queue Number of " + queueNum);
+    }
+
+    
+ public static synchronized CentralizedQueuingSystem getInstance()
+    {
+        if(instance == null)
+            instance = new CentralizedQueuingSystem();
+        return instance;
+    }
+    
+    public synchronized void helpDesk(int helpDeskStationNumber)
+    {
+        int qNum = queue.poll();
+        if (!queue.isEmpty())
+        {
+            helpDeskStations[helpDeskStationNumber - 1] = qNum;
+            System.out.println("Help Desk Station " + helpDeskStationNumber);
+            System.out.println("Helpdesk currently assisting someone");
+            System.out.println("In Progress Queue Number: " + qNum );
+        }
+        else
+        {
+            System.out.println("Queue currently empty.");
+        }
+
+    }
+
+ public synchronized void displayQueue()
+    {
+        System.out.println("...Queue...");
+
+        if (queue.isEmpty())
+        {
+            System.out.println(queue + "is empty.");
+        }
+        else
+        {
+            System.out.println(queue);
+        }
+    }
+
+
+    public synchronized void resetQueue(int newQueueNumber)
+    {
+        queue.clear();
+        for (int i = 1; i <= newQueueNumber; i++)
+        {
+            queue.add(i);
+        }
+        System.out.println("Queue number reset to" + queue);
+    }
+}
