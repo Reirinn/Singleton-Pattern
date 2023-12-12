@@ -1,0 +1,55 @@
+package SingletonPattern;
+import java.util.*;;
+
+public class HelpDesk
+{
+    
+    public static void main(String args[])
+    {
+            CentralizedQueuingSystem queuingSystem = CentralizedQueuingSystem.getInstance();
+
+            Scanner scanner = new Scanner(System.in);
+            int choice;
+
+            while (true)
+            {
+              System.out.print("[1]  Inquire ");
+              System.out.print("[2]  Helpdesk Station");
+              System.out.print("[3]  Reset Queue");
+              System.out.print("[4]  Exit Program");
+
+              System.out.print("Choice: ");
+              choice = scanner.nextInt();
+
+              switch (choice)
+              {
+                  case 1:
+                      queuingSystem.addQueue();
+                      queuingSystem.displayQueue();
+                      break;
+
+                  case 2:
+                      System.out.print("Enter Number of Helpdesk Station Currently Available: ");
+                      int helpDesk = scanner.nextInt();
+                      monitoringQueuingSystem.helpDesk(helpDeskStationNumber);
+                      monitoringQueuingSystem.displayQueue();
+                      break;
+
+                  case 3:
+                      System.out.println("Queue Number Reset");
+                      System.out.println("Enter New Queue Number: ");
+                      int queueNumber = scanner.nextInt();
+                      monitoringQueuingSystem.resetQueue(queueNumber);
+                      break;
+
+                  case 4:
+                      System.out.println("Exiting Program");
+                      System.exit(2);
+                      break;
+
+                  default:
+                      System.out.println("Invalid Input, Try Again");
+                    }
+                }
+            }
+        }
